@@ -44,5 +44,3 @@ The `word_counter.php` script provides the backend logic for counting words in t
 ## License
 
 This project is licensed under the MIT License. Feel free to use, modify, and distribute it as needed.
-
-```

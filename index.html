@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Word Counter</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h2 class="mb-4">Word Counter</h2>
+        <form id="wordCounterForm">
+            <div class="form-group">
+                <label for="word1">Word 1:</label>
+                <input type="text" class="form-control" name="word1" id="word1" placeholder="Enter Word 1">
+            </div>
+            <div class="form-group">
+                <label for="word2">Word 2:</label>
+                <input type="text" class="form-control" name="word2" id="word2" placeholder="Enter Word 2">
+            </div>
+            <div class="form-group">
+                <label for="word3">Word 3:</label>
+                <input type="text" class="form-control" name="word3" id="word3" placeholder="Enter Word 3">
+            </div>
+            <div class="form-group">
+                <label for="text_length">Text Length:</label>
+                <input type="number" class="form-control" name="text_length" id="text_length" placeholder="Enter Text Length" value="50">
+            </div>
+            <div class="form-group">
+                <label for="random_text">Random Text:</label>
+                <textarea class="form-control" name="random_text" id="random_text" placeholder="Enter random text"></textarea>
+            </div>
+            <button type="button" id="countWordsBtn" class="btn btn-primary">Count Words</button>
+        </form>
+        <div id="result" class="mt-4"></div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#countWordsBtn").click(function () {
+                event.preventDefault();
+                var formData = $("#wordCounterForm").serialize();
+
+                $.ajax({
+		            type: "POST",
+		            url: "word_counter.php",
+		            data: formData,
+		            cache: false,
+		        }).done(function (response) {
+		            console.log("Response received:", response); // Check response
+		            $("#result").html(response);
+		        }).fail(function (jqXHR, textStatus, errorThrown) {
+		            console.log("Error:", errorThrown);
+		        });
+            });
+        });
+    </script>
+</body>
+</html>

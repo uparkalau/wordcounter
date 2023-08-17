@@ -11,8 +11,6 @@ class BasicTextGenerator implements TextGenerator {
     private array $wordList;
 
     /**
-     * Constructor for the BasicTextGenerator class.
-     *
      * @param array $wordList An array containing the list of words for generating text.
      */
     public function __construct(array $wordList) {
@@ -27,25 +25,23 @@ class BasicTextGenerator implements TextGenerator {
      * @return string The generated random text.
      */
     public function generate(int $length): string {
-        // Initialize an empty string to store the generated text
         $text = '';
 
-        // Get the total count of words in the word list
-        $wordCount = count($this->wordList);
-
-        // Iterate to generate the specified length of text
+        // Loop to generate text characters
         for ($i = 0; $i < $length; $i++) {
-            // Generate a random index to select a word from the word list
-            $randomWordIndex = mt_rand(0, $wordCount - 1);
+            // Generate a random character
+            $randomCharacter = chr(mt_rand(97, 122)); // ASCII code for lowercase letters
 
-            // Get the randomly selected word from the word list
-            $randomWord = $this->wordList[$randomWordIndex];
+            // Append the random character to the text
+            $text .= $randomCharacter;
 
-            // Append the randomly selected word to the generated text
-            $text .= $randomWord;
+            // Insert random occurrences of words from wordList
+            if (mt_rand(0, 1) === 1) {
+                $randomWord = $this->wordList[array_rand($this->wordList)];
+                $text .= $randomWord;
+            }
         }
 
-        // Return the generated random text
         return $text;
     }
 }
@@ -56,8 +52,6 @@ class WordCounter {
     private array $wordPositions = [];
 
     /**
-	 * Constructor for the WordCounter class.
-	 *
 	 * @param array $wordList An array containing the list of words to be counted.
 	 */
 	public function __construct(private array $wordList) {

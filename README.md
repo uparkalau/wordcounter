@@ -6,9 +6,9 @@ The Word Counter Web App is a simple tool that allows you to count the occurrenc
 ## Getting Started
 
 1. Clone the repository to your local machine:
-   ```
+   
    git clone https://github.com/uparkalau/wordcounter.git
-   ```
+   
 
 2. Navigate to the project directory:
    ```

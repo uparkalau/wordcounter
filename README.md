@@ -19,7 +19,7 @@ The Word Counter Web App is a simple tool that allows you to count the occurrenc
 
 ### index.php
 
-1. Open `index.php` in your web browser.
+1. Open `index.html` in your web browser.
 2. Fill in the word fields (`word1`, `word2`, and `word3`) with the words you want to count.
 3. Optionally, provide the desired text length and a custom random text. If not provided, default values will be used.
 4. Click the "Count Words" button.
